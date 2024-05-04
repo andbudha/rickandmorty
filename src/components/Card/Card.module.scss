@@ -1,15 +1,23 @@
 @import '../../assets/sass/variable.scss';
+@import '../../assets/sass/mixins.scss';
 .card_main_box {
   height: 200px;
   width: 200px;
   margin: 20px;
   border-radius: 6px;
-  border: solid 2px $first_additional_color;
+  border: solid 3px $first_additional_color;
+  @include flexBox(nowrap, row, center, center);
 
-  .character_image {
+  .card_box {
     height: 196px;
     width: 196px;
-    border-radius: 6px;
-    object-fit: cover;
+    @include flexBox(nowrap, row, center, center);
+
+    .character_image {
+      height: 196px;
+      width: 196px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
   }
 }
