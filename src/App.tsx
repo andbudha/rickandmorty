@@ -1,10 +1,14 @@
-import './App.css';
+import styles from './App.module.scss';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
-    <>
-      <h1>Hello React</h1>
-    </>
+    <div className={styles.main_app_box}>
+      <div className={styles.app_box}>
+        {' '}
+        <Footer />
+      </div>
+    </div>
   );
 }
 

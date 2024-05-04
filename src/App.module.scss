@@ -1,0 +1,18 @@
+@import '../src/assets/sass/variable.scss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main_app_box {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.app_box {
+  margin: 0 auto;
+  max-width: 1400px;
+  min-height: 100vh;
+  background: $secondary_color;
+}
