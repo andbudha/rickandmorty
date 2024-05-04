@@ -1,15 +1,15 @@
 @import '../../assets/sass/variable.scss';
 .card_main_box {
-  height: 220px;
-  width: 220px;
+  height: 200px;
+  width: 200px;
   margin: 20px;
   border-radius: 6px;
   border: solid 2px $first_additional_color;
 }
 
 .character_image {
-  height: 216px;
-  width: 216px;
+  height: 196px;
+  width: 196px;
   border-radius: 6px;
   object-fit: cover;
 }
