@@ -1,7 +1,9 @@
 @import '../../assets/sass/variable.scss';
+@import '../../assets/sass/mixins.scss';
 
 .footer_main_box {
   background: $primary_color;
   height: 100px;
   width: 100%;
+  @include flexBox(nowrap, row, center, center);
 }
