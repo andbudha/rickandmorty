@@ -1,0 +1,27 @@
+@import '../../assets/sass/variable.scss';
+@import '../../assets/sass/mixins.scss';
+.paginator_main_box {
+  height: 160px;
+  width: 100%;
+  @include flexBox(nowrap, column, start, center);
+
+  .paginator_box {
+    height: 50px;
+    width: 300px;
+    @include flexBox(nowrap, row, space-between, center);
+
+    .chevron_box {
+      width: 40px;
+      height: 40px;
+      @include flexBox(nowrap, row, center, center);
+
+      .chevron {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        cursor: pointer;
+        color: $primary_color;
+      }
+    }
+  }
+}
