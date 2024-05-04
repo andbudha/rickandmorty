@@ -21,12 +21,24 @@ export const Paginator = ({
   return (
     <div className={styles.paginator_main_box}>
       <div className={styles.paginator_box}>
-        <div className={styles.chevron_box} onClick={goToPrevPageHandler}>
-          <FaChevronLeft className={styles.chevron} />
-        </div>
-        <div className={styles.chevron_box} onClick={goToNextPageHandler}>
-          <FaChevronRight className={styles.chevron} />
-        </div>
+        <button
+          disabled={pageNum === 1}
+          className={styles.chevron_btn}
+          onClick={goToPrevPageHandler}
+        >
+          <FaChevronLeft
+            className={`${styles.chevron} ${pageNum === 1 && styles.disabled}`}
+          />
+        </button>
+        <button
+          disabled={pageNum === 42}
+          className={styles.chevron_btn}
+          onClick={goToNextPageHandler}
+        >
+          <FaChevronRight
+            className={`${styles.chevron} ${pageNum === 42 && styles.disabled}`}
+          />
+        </button>
       </div>
     </div>
   );

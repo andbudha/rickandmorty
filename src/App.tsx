@@ -9,12 +9,15 @@ import { Paginator } from './components/Paginator/Paginator';
 function App() {
   const [characters, setCharacters] = useState<null | Result[]>(null);
   const [pageNum, setPageNum] = useState<number>(1);
+  console.log(characters);
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get<FetchingDataResponse>(
         `https://rickandmortyapi.com/api/character/?page=${pageNum}`
       );
+      console.log(response);
+
       const data = response.data.results;
       setCharacters(data);
     };
