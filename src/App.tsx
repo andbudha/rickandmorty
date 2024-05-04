@@ -4,6 +4,7 @@ import { Footer } from './components/Footer/Footer';
 import { GridCard } from './components/GridCard/GridCard';
 import { FetchingDataResponse, Result } from './assets/types/types';
 import axios from 'axios';
+import { Paginator } from './components/Paginator/Paginator';
 
 function App() {
   const [characters, setCharacters] = useState<null | Result[]>(null);
@@ -25,6 +26,7 @@ function App() {
         {' '}
         <Footer />
         <GridCard characters={characters} />
+        <Paginator />
       </div>
     </div>
   );

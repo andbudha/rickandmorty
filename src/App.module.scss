@@ -1,4 +1,5 @@
 @import '../src/assets/sass/variable.scss';
+@import '.././src/assets/sass/mixins.scss';
 
 * {
   margin: 0;
@@ -9,11 +10,12 @@
 .main_app_box {
   width: 100vw;
   min-height: 100vh;
-}
 
-.app_box {
-  margin: 0 auto;
-  max-width: 1400px;
-  min-height: 100vh;
-  background: $secondary_color;
+  .app_box {
+    margin: 0 auto;
+    max-width: 1400px;
+    min-height: 100vh;
+    background: $secondary_color;
+    @include flexBox(nowrap, column, space-between, center);
+  }
 }

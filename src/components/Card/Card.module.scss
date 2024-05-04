@@ -5,11 +5,11 @@
   margin: 20px;
   border-radius: 6px;
   border: solid 2px $first_additional_color;
-}
 
-.character_image {
-  height: 196px;
-  width: 196px;
-  border-radius: 6px;
-  object-fit: cover;
+  .character_image {
+    height: 196px;
+    width: 196px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
 }

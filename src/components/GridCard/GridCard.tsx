@@ -2,9 +2,9 @@ import { Result } from '../../assets/types/types';
 import { Card } from '../Card/Card';
 import styles from './GridCard.module.scss';
 
-type GridCard = {
+interface GridCard {
   characters: Result[] | null;
-};
+}
 export const GridCard = ({ characters }: GridCard) => {
   const cards = characters?.map((character) => (
     <div key={character.id}>
