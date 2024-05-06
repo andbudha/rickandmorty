@@ -3,10 +3,11 @@ import styles from './Card.module.scss';
 
 interface Card {
   character: Result;
+  toggleDetailsCard: (characterID: number) => void;
 }
-export const Card = ({ character }: Card) => {
+export const Card = ({ character, toggleDetailsCard }: Card) => {
   const displayCharacterInfoHandler = (characterID: number) => {
-    console.log(characterID);
+    toggleDetailsCard(characterID);
   };
   return (
     <div className={styles.flip_card}>

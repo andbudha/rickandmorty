@@ -12,10 +12,6 @@ function App() {
   const [pageNum, setPageNum] = useState<number>(1);
   const [typedInCharacterName, setTypedInCharacterName] = useState('');
   const [axiosErr, setAxiosErr] = useState<boolean | string>(false);
-  console.log(axiosErr);
-
-  console.log(typedInCharacterName);
-  console.log(characters);
 
   useEffect(() => {
     const getData = async () => {
@@ -51,6 +47,7 @@ function App() {
     const typedInputValue = inputValue.toLowerCase();
     setTypedInCharacterName(typedInputValue);
   };
+
   return (
     <div className={styles.main_app_box}>
       <div className={styles.app_box}>

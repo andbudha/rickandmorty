@@ -1,0 +1,68 @@
+@import '../../assets/sass/mixins.scss';
+@import '../../assets/sass/variable.scss';
+
+.detailed_card_box {
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #222831;
+  opacity: 0.98;
+  @include flexBox(nowrap, row, center, center);
+
+  .detailed_card {
+    position: fixed;
+    height: 440px;
+    width: 360px;
+    border: 3px solid $first_additional_color;
+    background-color: #fff;
+    @include flexBox(nowrap, column, center, center);
+
+    .selected_character_name {
+      color: $first_additional_color;
+      letter-spacing: 1px;
+      margin: 10px 0;
+    }
+
+    .detailed_card_img_box {
+      width: 240px;
+      height: 240px;
+      background-color: $first_additional_color;
+
+      .detailed_card_img {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
+    .species,
+    .status {
+      color: $first_additional_color;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    .close_btn_box {
+      height: 34px;
+      width: 100px;
+      background-color: $primary_color;
+      border: 2px solid $first_additional_color;
+      color: $secondary_color;
+      margin-top: 20px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      @include flexBox(nowrap, column, center, center);
+
+      .close_icon {
+        height: 30px;
+        width: 30px;
+        color: $secondary_color;
+      }
+    }
+  }
+}
