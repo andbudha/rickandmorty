@@ -9,16 +9,16 @@ export const Card = ({ character }: Card) => {
     console.log(characterID);
   };
   return (
-    <div className={styles.card_main_box}>
-      <div className={styles.card_box}>
-        {/* <div className={styles.flip_card_front_main_box}>
+    <div className={styles.flip_card}>
+      <div className={styles.flip_card_inner}>
+        <div className={styles.flip_card_front}>
           <img
             className={styles.character_image}
             src={character.image}
             alt=""
           />
-        </div> */}
-        <div className={styles.flip_card_back_main_box}>
+        </div>
+        <div className={styles.flip_card_back}>
           <div className={styles.flip_card_back_box}>
             {' '}
             <h3 className={styles.character_name}>{character.name}</h3>
