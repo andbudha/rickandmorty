@@ -34,3 +34,9 @@ export interface Location {
   name: string;
   url: string;
 }
+
+//Error object type
+export interface AxiosErrObj {
+  message: string;
+  error: string;
+}
