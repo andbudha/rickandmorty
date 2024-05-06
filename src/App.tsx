@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import { GridCard } from './components/GridCard/GridCard';
-import {
-  AxiosErrObj,
-  FetchingDataResponse,
-  Result,
-} from './assets/types/types';
+import { FetchingDataResponse, Result } from './assets/types/types';
 import axios, { AxiosError } from 'axios';
 import { Paginator } from './components/Paginator/Paginator';
 import { Navbar } from './components/Navbar/Navbar';
+import { Page404 } from './components/404/Page404';
 
 function App() {
   const [characters, setCharacters] = useState<null | Result[]>(null);
   const [pageNum, setPageNum] = useState<number>(1);
   const [typedInCharacterName, setTypedInCharacterName] = useState('');
-  const [error, setError] = useState<boolean | AxiosErrObj>(false);
-  console.log(error);
+  const [axiosErr, setAxiosErr] = useState<boolean | string>(false);
+  console.log(axiosErr);
 
   console.log(typedInCharacterName);
   console.log(characters);
@@ -29,16 +26,13 @@ function App() {
 
         const data = response.data.results;
         setCharacters(data);
+        setAxiosErr(false);
       } catch (error: unknown) {
         console.log(error);
 
         if (error instanceof AxiosError) {
           console.log(error.message);
-          console.log(error.response?.data.error);
-          setError({
-            message: error.message,
-            error: `${error.response?.data.error}!`,
-          });
+          setAxiosErr(error.message);
           setCharacters([]);
         }
       }
@@ -62,7 +56,11 @@ function App() {
       <div className={styles.app_box}>
         {' '}
         <Navbar filterCharactersByName={filterCharactersByName} />
-        <GridCard characters={characters} />
+        {axiosErr ? (
+          <Page404 axiosErr={axiosErr} />
+        ) : (
+          <GridCard characters={characters} />
+        )}
         {characters?.length && (
           <Paginator
             setNewNextPage={setNewNextPage}
