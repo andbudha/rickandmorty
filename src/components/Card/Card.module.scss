@@ -1,11 +1,13 @@
 @import '../../assets/sass/variable.scss';
 @import '../../assets/sass/mixins.scss';
+
 .card_main_box {
   height: 200px;
   width: 200px;
   margin: 20px;
   border-radius: 6px;
   border: solid 3px $first_additional_color;
+  letter-spacing: 1px;
   @include flexBox(nowrap, row, center, center);
 
   .card_box {
@@ -13,11 +15,60 @@
     width: 196px;
     @include flexBox(nowrap, row, center, center);
 
-    .character_image {
-      height: 196px;
-      width: 196px;
+    .flip_card_front_main_box {
+      height: 100%;
+      width: 100%;
+      @include flexBox(nowrap, row, center, center);
+
+      .character_image {
+        height: 196px;
+        width: 196px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+    }
+    .flip_card_back_main_box {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      background-color: $primary_color;
+      color: $secondary_color;
       border-radius: 6px;
-      object-fit: cover;
+      @include flexBox(nowrap, column, center, center);
+
+      .flip_card_back_box {
+        height: 160px;
+        width: 180px;
+        @include flexBox(nowrap, column, space-between, center);
+
+        .character_name {
+          margin-top: 50px;
+        }
+        .read_more_btn {
+          height: 34px;
+          width: 100px;
+          background-color: $secondary_color;
+          color: $first_additional_color;
+          cursor: pointer;
+          border: 2px solid $first_additional_color;
+          @include flexBox(nowrap, row, center, center);
+
+          &:hover {
+            transition: 0.3s;
+            background-color: $first_additional_color;
+            border: 2px solid $secondary_color;
+            color: $secondary_color;
+          }
+          &:not(:hover) {
+            transition: 0.3s;
+          }
+          &:active {
+            background: $secondary_color;
+            border: 2px solid $first_additional_color;
+            color: $first_additional_color;
+          }
+        }
+      }
     }
   }
 }
