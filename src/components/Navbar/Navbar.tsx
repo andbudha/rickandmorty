@@ -6,7 +6,7 @@ interface Navbar {
 }
 export const Navbar = ({ filterCharactersByName }: Navbar) => {
   return (
-    <div className={styles.footer_main_box}>
+    <div className={styles.navbar_main_box}>
       <Input filterCharactersByName={filterCharactersByName} />
     </div>
   );
