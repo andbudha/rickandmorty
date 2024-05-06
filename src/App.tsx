@@ -1,46 +1,75 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
-import { Footer } from './components/Footer/Footer';
 import { GridCard } from './components/GridCard/GridCard';
-import { FetchingDataResponse, Result } from './assets/types/types';
-import axios from 'axios';
+import {
+  AxiosErrObj,
+  FetchingDataResponse,
+  Result,
+} from './assets/types/types';
+import axios, { AxiosError } from 'axios';
 import { Paginator } from './components/Paginator/Paginator';
+import { Navbar } from './components/Navbar/Navbar';
 
 function App() {
   const [characters, setCharacters] = useState<null | Result[]>(null);
   const [pageNum, setPageNum] = useState<number>(1);
+  const [typedInCharacterName, setTypedInCharacterName] = useState('');
+  const [error, setError] = useState<boolean | AxiosErrObj>(false);
+  console.log(error);
+
+  console.log(typedInCharacterName);
   console.log(characters);
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get<FetchingDataResponse>(
-        `https://rickandmortyapi.com/api/character/?page=${pageNum}`
-      );
-      console.log(response);
+      try {
+        const response = await axios.get<FetchingDataResponse>(
+          `https://rickandmortyapi.com/api/character/?page=${pageNum}&name=${typedInCharacterName}`
+        );
 
-      const data = response.data.results;
-      setCharacters(data);
+        const data = response.data.results;
+        setCharacters(data);
+      } catch (error: unknown) {
+        console.log(error);
+
+        if (error instanceof AxiosError) {
+          console.log(error.message);
+          console.log(error.response?.data.error);
+          setError({
+            message: error.message,
+            error: `${error.response?.data.error}!`,
+          });
+          setCharacters([]);
+        }
+      }
     };
     getData();
-  }, [pageNum]);
+  }, [pageNum, typedInCharacterName]);
 
-  const setNewNextPage = () => {
+  const setNewNextPage = (): void => {
     setPageNum(pageNum + 1);
   };
-  const setNewPrevPage = () => {
+  const setNewPrevPage = (): void => {
     setPageNum(pageNum - 1);
+  };
+
+  const filterCharactersByName = (inputValue: string) => {
+    const typedInputValue = inputValue.toLowerCase();
+    setTypedInCharacterName(typedInputValue);
   };
   return (
     <div className={styles.main_app_box}>
       <div className={styles.app_box}>
         {' '}
-        <Footer />
+        <Navbar filterCharactersByName={filterCharactersByName} />
         <GridCard characters={characters} />
-        <Paginator
-          setNewNextPage={setNewNextPage}
-          setNewPrevPage={setNewPrevPage}
-          pageNum={pageNum}
-        />
+        {characters?.length && (
+          <Paginator
+            setNewNextPage={setNewNextPage}
+            setNewPrevPage={setNewPrevPage}
+            pageNum={pageNum}
+          />
+        )}
       </div>
     </div>
   );

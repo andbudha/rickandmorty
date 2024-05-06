@@ -1,11 +1,15 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './Input.module.scss';
-export const Input = () => {
+
+interface Input {
+  filterCharactersByName: (inpuValue: string) => void;
+}
+export const Input = ({ filterCharactersByName }: Input) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const inputValueCatchingHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value);
     setInputValue(e.currentTarget.value);
+    filterCharactersByName(e.currentTarget.value);
   };
 
   return (
