@@ -40,9 +40,11 @@
         border: 3px solid $disabled_btn;
         background: $secondary_color;
       }
-    }
-    &:hover {
-      color: $disabled_btn;
+      &:active {
+        background: $secondary_color;
+        border: 3px solid $primary_color;
+        color: $primary_color;
+      }
     }
   }
 }

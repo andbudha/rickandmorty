@@ -10,8 +10,6 @@ export const Paginator = ({
   setNewPrevPage,
   pageNum,
 }: Paginator) => {
-  console.log(pageNum);
-
   const goToPrevPageHandler = () => {
     setNewPrevPage();
   };
