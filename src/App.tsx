@@ -6,6 +6,7 @@ import axios, { AxiosError } from 'axios';
 import { Paginator } from './components/Paginator/Paginator';
 import { Navbar } from './components/Navbar/Navbar';
 import { Page404 } from './components/404/Page404';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const [characters, setCharacters] = useState<null | Result[]>(null);
@@ -24,12 +25,16 @@ function App() {
         setCharacters(data);
         setAxiosErr(false);
       } catch (error: unknown) {
-        console.log(error);
-
-        if (error instanceof AxiosError) {
-          console.log(error.message);
-          setAxiosErr(error.message);
+        if (
+          error instanceof AxiosError &&
+          error.response?.data.error === 'There is nothing here'
+        ) {
+          setAxiosErr('Sorry, no match found!');
           setCharacters([]);
+        } else if (error instanceof AxiosError) {
+          setAxiosErr(error.message);
+        } else {
+          console.log(error);
         }
       }
     };
@@ -58,13 +63,14 @@ function App() {
         ) : (
           <GridCard characters={characters} />
         )}
-        {characters?.length && (
+        {!!characters?.length && characters.length > 19 && (
           <Paginator
             setNewNextPage={setNewNextPage}
             setNewPrevPage={setNewPrevPage}
             pageNum={pageNum}
           />
         )}
+        <Footer />
       </div>
     </div>
   );
