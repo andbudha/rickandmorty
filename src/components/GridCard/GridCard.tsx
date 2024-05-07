@@ -8,7 +8,7 @@ interface GridCard {
   characters: Result[] | null;
 }
 export const GridCard = ({ characters }: GridCard) => {
-  const [detailsCard, setDetailsCard] = useState<boolean>(true);
+  const [detailsCard, setDetailsCard] = useState<boolean>(false);
   const [selectedCharacter, setSelectedCharacter] = useState<
     undefined | Result
   >(undefined);
@@ -17,10 +17,8 @@ export const GridCard = ({ characters }: GridCard) => {
     const character = characters?.find(
       (character) => character.id === characterID
     );
-
     setSelectedCharacter(character);
     setDetailsCard(!detailsCard);
-    console.log(characterID);
   };
 
   const cards = characters?.map((character) => (
