@@ -12,90 +12,84 @@
   letter-spacing: 1px;
   perspective: 1000px;
   @include flexBox(nowrap, row, center, center);
-}
+  &:hover .flip_card_inner {
+    transform: rotateY(180deg);
+  }
+  .flip_card_inner {
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    height: 196px;
+    width: 196px;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    @include flexBox(nowrap, row, center, center);
+    .flip_card_front {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      text-align: center;
+      background-color: $primary_color;
+      color: $secondary_color;
+      border-radius: 6px;
+      @include flexBox(nowrap, column, center, center);
+      .character_image {
+        height: 196px;
+        width: 196px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+    }
 
-.flip_card_inner {
-  position: relative;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  height: 196px;
-  width: 196px;
-  position: relative;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  @include flexBox(nowrap, row, center, center);
-}
+    .flip_card_back {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      text-align: center;
+      background-color: $primary_color;
+      color: $secondary_color;
+      border-radius: 6px;
+      @include flexBox(nowrap, column, center, center);
+      .flip_card_back_box {
+        height: 160px;
+        width: 180px;
+        @include flexBox(nowrap, column, space-between, center);
+        .character_name {
+          margin-top: 50px;
+        }
+        .read_more_btn {
+          height: 34px;
+          width: 100px;
+          background-color: $secondary_color;
+          color: $first_additional_color;
+          cursor: pointer;
+          border: 2px solid $first_additional_color;
+          @include flexBox(nowrap, row, center, center);
+          &:hover {
+            transition: 0.3s;
+            background-color: $first_additional_color;
+            border: 2px solid $secondary_color;
+            color: $secondary_color;
+          }
+          &:not(:hover) {
+            transition: 0.3s;
+          }
+          &:active {
+            background: $secondary_color;
+            border: 2px solid $first_additional_color;
+            color: $first_additional_color;
+          }
+        }
+      }
+    }
 
-.flip_card:hover .flip_card_inner {
-  transform: rotateY(180deg);
-}
-
-.flip_card_front {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-  text-align: center;
-  background-color: $primary_color;
-  color: $secondary_color;
-  border-radius: 6px;
-  @include flexBox(nowrap, column, center, center);
-}
-
-.character_image {
-  height: 196px;
-  width: 196px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-.flip_card_back {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-  text-align: center;
-  background-color: $primary_color;
-  color: $secondary_color;
-  border-radius: 6px;
-  @include flexBox(nowrap, column, center, center);
-}
-
-.flip_card_back_box {
-  height: 160px;
-  width: 180px;
-  @include flexBox(nowrap, column, space-between, center);
-}
-
-.character_name {
-  margin-top: 50px;
-}
-
-.read_more_btn {
-  height: 34px;
-  width: 100px;
-  background-color: $secondary_color;
-  color: $first_additional_color;
-  cursor: pointer;
-  border: 2px solid $first_additional_color;
-  @include flexBox(nowrap, row, center, center);
-}
-
-.read_more_btn:hover {
-  transition: 0.3s;
-  background-color: $first_additional_color;
-  border: 2px solid $secondary_color;
-  color: $secondary_color;
-}
-.read_more_btn:not(:hover) {
-  transition: 0.3s;
-}
-.read_more_btn:active {
-  background: $secondary_color;
-  border: 2px solid $first_additional_color;
-  color: $first_additional_color;
-}
-.flip_card_back {
-  transform: rotateY(180deg);
+    .flip_card_back {
+      transform: rotateY(180deg);
+    }
+  }
 }
